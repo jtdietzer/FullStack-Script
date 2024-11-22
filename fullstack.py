@@ -30,12 +30,12 @@ def create_frontend_structure(base_path):
         os.makedirs(directory, exist_ok=True)
 
     # Create common frontend files
-    create_file(os.path.join(frontend_path, ".gitignore"))
-    create_file(os.path.join(frontend_path, "package.json"))
-    create_file(os.path.join(frontend_path, "README.md"))
-    create_file(os.path.join(frontend_path, ".env"))
-    create_file(os.path.join(src_path, "App.jsx"), "import React from 'react';\nexport default function App() { return <div>App</div>; }")
-    create_file(os.path.join(src_path, "index.jsx"), "import ReactDOM from 'react-dom';\nimport App from './App';\nReactDOM.render(<App />, document.getElementById('root'));")
+    create_file(os.path.join(frontend_path, ".gitignore"), "# Node.js dependencies\nnode_modules\n")
+    create_file(os.path.join(frontend_path, "package.json"), "// Defines frontend dependencies and scripts")
+    create_file(os.path.join(frontend_path, "README.md"), "# Frontend Documentation\n// Add details about the frontend setup here.")
+    create_file(os.path.join(frontend_path, ".env"), "# Environment variables for the frontend")
+    create_file(os.path.join(src_path, "App.jsx"), "// Root component of the frontend\nimport React from 'react';\nexport default function App() { return <div>App</div>; }")
+    create_file(os.path.join(src_path, "index.jsx"), "// Entry point for React\nimport ReactDOM from 'react-dom';\nimport App from './App';\nReactDOM.render(<App />, document.getElementById('root'));")
 
 
 def create_backend_structure(base_path):
@@ -57,12 +57,12 @@ def create_backend_structure(base_path):
         os.makedirs(directory, exist_ok=True)
 
     # Create common backend files
-    create_file(os.path.join(backend_path, ".gitignore"))
-    create_file(os.path.join(backend_path, "package.json"))
-    create_file(os.path.join(backend_path, "README.md"))
-    create_file(os.path.join(backend_path, ".env"))
-    create_file(os.path.join(backend_path, "app.js"), "const express = require('express');\nconst app = express();\nmodule.exports = app;")
-    create_file(os.path.join(backend_path, "server.js"), "const app = require('./app');\nconst PORT = process.env.PORT || 3000;\napp.listen(PORT, () => console.log(`Server running on port ${PORT}`));")
+    create_file(os.path.join(backend_path, ".gitignore"), "# Node.js dependencies\nnode_modules\n.env")
+    create_file(os.path.join(backend_path, "package.json"), "// Defines backend dependencies and scripts")
+    create_file(os.path.join(backend_path, "README.md"), "# Backend Documentation\n// Add details about the backend setup here.")
+    create_file(os.path.join(backend_path, ".env"), "# Environment variables for the backend")
+    create_file(os.path.join(backend_path, "app.js"), "// Main application logic\nconst express = require('express');\nconst app = express();\nmodule.exports = app;")
+    create_file(os.path.join(backend_path, "server.js"), "// Entry point for the backend server\nconst app = require('./app');\nconst PORT = process.env.PORT || 3000;\napp.listen(PORT, () => console.log(`Server running on port ${PORT}`));")
 
 
 def main():
