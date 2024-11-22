@@ -1,3 +1,4 @@
+
 import os
 
 def create_file(filepath, content=""):
@@ -46,7 +47,8 @@ export default function App() {
             <ArticlePage />
         </div>
     );
-}""")
+}
+""")
     create_file(os.path.join(src_path, "index.jsx"), """// Entry point for React
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -160,7 +162,6 @@ export default function formatDate(date) {
 }
 """)
 
-
 def create_backend_structure(base_path):
     """Creates the backend structure."""
     backend_path = os.path.join(base_path, "backend")
@@ -183,9 +184,37 @@ def create_backend_structure(base_path):
     create_file(os.path.join(backend_path, ".gitignore"), "# Node.js dependencies\nnode_modules\n.env")
     create_file(os.path.join(backend_path, "package.json"), "// Defines backend dependencies and scripts")
     create_file(os.path.join(backend_path, "README.md"), "# Backend Documentation\n// Add details about the backend setup here.")
-    create_file(os.path.join(backend_path, ".env"), "# Environment variables for the backend")
-    create_file(os.path.join(backend_path, "app.js"), "// Main application logic\nconst express = require('express');\nconst app = express();\nmodule.exports = app;")
-    create_file(os.path.join(backend_path, "server.js"), "// Entry point for the backend server\nconst app = require('./app');\nconst PORT = process.env.PORT || 3000;\napp.listen(PORT, () => console.log(`Server running on port ${PORT}`));")
+    create_file(os.path.join(backend_path, "app.js"), """// Main application logic
+const express = require('express');
+const app = express();
+module.exports = app;
+""")
+    create_file(os.path.join(backend_path, "server.js"), """// Entry point for the backend server
+const app = require('./app');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+""")
 
-    # Add specific files in folders
-    create_file(os.path.join(backend_path, "config/dbConfig.js"), "// Configuration for the
+    create_file(os.path.join(backend_path, "config/dbConfig.js"), """// Database configuration file
+module.exports = {
+    url: process.env.DB_URL || 'mongodb://localhost:27017/project_db',
+};
+""")
+
+def main():
+    project_name = input("Enter the name of your project: ").strip()
+    base_path = os.path.join(os.getcwd(), project_name)
+
+    if not os.path.exists(base_path):
+        os.makedirs(base_path)
+
+    print(f"Creating frontend structure for '{project_name}'...")
+    create_frontend_structure(base_path)
+
+    print(f"Creating backend structure for '{project_name}'...")
+    create_backend_structure(base_path)
+
+    print(f"Project '{project_name}' structure has been successfully created!")
+
+if __name__ == "__main__":
+    main()
