@@ -37,6 +37,18 @@ def create_frontend_structure(base_path):
     create_file(os.path.join(src_path, "App.jsx"), "// Root component of the frontend\nimport React from 'react';\nexport default function App() { return <div>App</div>; }")
     create_file(os.path.join(src_path, "index.jsx"), "// Entry point for React\nimport ReactDOM from 'react-dom';\nimport App from './App';\nReactDOM.render(<App />, document.getElementById('root'));")
 
+    # Add specific files in folders
+    create_file(os.path.join(src_path, "components/common/Button.jsx"), "// A reusable button component")
+    create_file(os.path.join(src_path, "components/layout/Header.jsx"), "// The header layout component")
+    create_file(os.path.join(src_path, "features/article/components/ArticleCard.jsx"), "// Displays a single article card")
+    create_file(os.path.join(src_path, "features/article/pages/ArticlePage.jsx"), "// The page displaying a single article")
+    create_file(os.path.join(src_path, "features/auth/LoginForm.jsx"), "// A login form component for authentication")
+    create_file(os.path.join(src_path, "context/AuthContext.js"), "// Context for managing authentication state")
+    create_file(os.path.join(src_path, "hooks/useAuth.js"), "// A custom hook for authentication logic")
+    create_file(os.path.join(src_path, "services/apiClient.js"), "// Handles API requests to the backend")
+    create_file(os.path.join(src_path, "styles/theme.css"), "/* Global theme styles */")
+    create_file(os.path.join(src_path, "utils/formatDate.js"), "// Utility function to format dates")
+
 
 def create_backend_structure(base_path):
     """Creates the backend structure."""
@@ -63,6 +75,22 @@ def create_backend_structure(base_path):
     create_file(os.path.join(backend_path, ".env"), "# Environment variables for the backend")
     create_file(os.path.join(backend_path, "app.js"), "// Main application logic\nconst express = require('express');\nconst app = express();\nmodule.exports = app;")
     create_file(os.path.join(backend_path, "server.js"), "// Entry point for the backend server\nconst app = require('./app');\nconst PORT = process.env.PORT || 3000;\napp.listen(PORT, () => console.log(`Server running on port ${PORT}`));")
+
+    # Add specific files in folders
+    create_file(os.path.join(backend_path, "config/dbConfig.js"), "// Configuration for the database connection")
+    create_file(os.path.join(backend_path, "config/env.js"), "// Environment configuration file")
+    create_file(os.path.join(backend_path, "controllers/articleController.js"), "// Logic for handling article-related requests")
+    create_file(os.path.join(backend_path, "controllers/userController.js"), "// Logic for handling user-related requests")
+    create_file(os.path.join(backend_path, "middleware/authMiddleware.js"), "// Middleware for handling authentication")
+    create_file(os.path.join(backend_path, "middleware/errorHandler.js"), "// Middleware for handling errors globally")
+    create_file(os.path.join(backend_path, "models/Article.js"), "// Schema for article data")
+    create_file(os.path.join(backend_path, "models/User.js"), "// Schema for user data")
+    create_file(os.path.join(backend_path, "routes/articleRoutes.js"), "// Routes for article-related API endpoints")
+    create_file(os.path.join(backend_path, "routes/userRoutes.js"), "// Routes for user-related API endpoints")
+    create_file(os.path.join(backend_path, "services/articleService.js"), "// Business logic for article management")
+    create_file(os.path.join(backend_path, "services/userService.js"), "// Business logic for user management")
+    create_file(os.path.join(backend_path, "utils/logger.js"), "// Logger utility for logging application events")
+    create_file(os.path.join(backend_path, "tests/app.test.js"), "// Unit tests for the app.js file")
 
 
 def main():
